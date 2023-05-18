@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bucket_name="mondytestbucket1912"
+bucket_name="maximuss3bucket"
 
 aws s3api head-bucket --bucket "$bucket_name"  2>/dev/null
 

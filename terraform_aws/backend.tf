@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = "mondytestbucket1912"  
+    bucket         = "maximuss3bucket"  
     key            = "terraform.tfstate"   
     region         = "us-east-1"           
     encrypt        = true                  

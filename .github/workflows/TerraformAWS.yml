@@ -78,7 +78,7 @@ jobs:
           sudo mv kubectl /usr/local/bin/
   
       - name: Get Kubeconfig
-        run: aws eks update-kubeconfig --region us-east-1 --name mondyk8awsklas
+        run: aws eks update-kubeconfig --region us-east-1 --name maximusclustername
 
       # - name: test 
       #   run: kubectl delete pod mysql-77f9746947-p9lbs

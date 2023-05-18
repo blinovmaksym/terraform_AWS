@@ -10,8 +10,6 @@ spec:
     storage: 2Gi
   accessModes:
     - ReadWriteOnce
-  claimRef:
-    name: mysql-pvc
   hostPath:
     path: "/mnt/data"
 ---

@@ -11,7 +11,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   claimRef:
-    namespace: consul
     name: mysql-pvc
   hostPath:
     path: "/mnt/data"

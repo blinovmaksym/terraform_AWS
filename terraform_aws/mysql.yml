@@ -8,6 +8,10 @@ spec:
   resources:
     requests:
       storage: 20Gi
+  volumeMode: Filesystem
+  storageClassName: gp2
+  volumeBindingMode: Immediate
+    
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -55,3 +59,4 @@ spec:
   ports:
     - name: mysql
       port: 3306
+

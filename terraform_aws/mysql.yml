@@ -25,6 +25,9 @@ spec:
     - ReadWriteOnce
   storageClassName: fast-disks
   volumeName: mysql-pv
+  resources:
+    requests:
+      storage: 2Gi
 
 # #01-storage-class.yml
 # apiVersion: storage.k8s.io/v1

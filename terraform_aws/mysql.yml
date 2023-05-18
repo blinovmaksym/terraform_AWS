@@ -3,14 +3,20 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pvc
 spec:
+  storageClassName: gp2
+  capacity:
+    storage: 2Gi
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
-  volumeMode: Filesystem
-  storageClassName: gp2
-  volumeBindingMode: Immediate
+
+  # accessModes:
+  #   - ReadWriteOnce
+  # resources:
+  #   requests:
+  #     storage: 20Gi
+  # volumeMode: Filesystem
+  # storageClassName: gp2
+  # volumeBindingMode: Immediate
    
 ---
 apiVersion: apps/v1
@@ -60,3 +66,19 @@ spec:
     - name: mysql
       port: 3306
 
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: data-default-consul-consul-server-1
+  labels:
+    type: local
+spec:
+  storageClassName: fast-disks
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"

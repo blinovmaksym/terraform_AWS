@@ -54,6 +54,7 @@ module "eks" {
     max_capacity     = 2
     min_capacity     = 0
 
+
     instance_type = "t2.small"
     }
   }

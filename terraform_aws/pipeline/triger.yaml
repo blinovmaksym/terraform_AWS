@@ -13,8 +13,6 @@ spec:
   hostPath:
     path: "/mnt/data"
 ---
-
-
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -70,6 +68,7 @@ spec:
             persistentVolumeClaim:
               claimName: workspace-pvc
 ---
+
 apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:

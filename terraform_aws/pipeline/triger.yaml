@@ -30,7 +30,7 @@ spec:
           - name: revision
             value: main
           - name: gitrepositoryurl
-            value: "https://github.com/blinovmaksym/Wordpress-Tekton-atK8s-inGCP"
+            value: "https://github.com/blinovmaksym/terraform_AWS"
           - name: IMAGE
             value: "docker.io/maksymblinov/init_db_wp"
           - name: TAG

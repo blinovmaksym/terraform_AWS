@@ -5,7 +5,6 @@ echo "1 ----- >Tekton CLI"
 curl -LO https://github.com/tektoncd/cli/releases/download/v0.30.1/tektoncd-cli-0.30.1_Linux-64bit.deb
 sudo dpkg -i ./tektoncd-cli-0.30.1_Linux-64bit.deb
 
-
 # Install Tekton Pipelines
 echo "2 ----- >Install Tekton Pipelines"
 kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
@@ -34,6 +33,9 @@ stringData:
     username: $DOCKER_USERNAME
     password: $DOCKER_PASSWORD
 EOM
+
+
+
 
 kubectl apply -f regsecret.yaml
 

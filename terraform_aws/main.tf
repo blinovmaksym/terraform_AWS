@@ -52,10 +52,10 @@ module "eks" {
   main = {
     desired_capacity = 2
     max_capacity     = 2
-    min_capacity     = 0
+    min_capacity     = 2
 
 
-    instance_type = "t2.medium"
+    instance_type = "t3.medium"
     }
   }
 }

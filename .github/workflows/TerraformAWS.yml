@@ -84,7 +84,7 @@ jobs:
         env:
           DOCKER_USERNAME : ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD : ${{ secrets.DOCKER_PASSWORD }}
-          SCRIPT_DIR: ${{ github.workspace }}/terraform_gcp/scripts
+          SCRIPT_DIR: ${{ github.workspace }}/terraform_aws/scripts
         run: bash  $SCRIPT_DIR/install-tekton.sh
 
       - name: Wait for 120 seconds()

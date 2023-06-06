@@ -1,0 +1,46 @@
+gcloud container clusters get-credentials maxsprout-clusterk8s --region=us-central1 --project=itspoutproject
+
+
+docker build -t maksymblinov/init_db:v1 ./
+docker push maksymblinov/init_db:v1
+rm  ~/.docker/config.json
+
+kubectl get secrets -n tekton-pipelines
+kubectl describe  secrets git-ssh-key -n tekton-pipelines
+kubectl delete secrets regsecret  -n tekton-pipelines
+kubectl get taskruns
+kubectl delete taskrun --all
+kubectl delete task --all
+kubectl create -f test_taskrun.yaml
+kubectl get serviceaccounts
+kubectl delete  serviceaccounts pipeline
+kubectl apply -f pipelinerun_test.yaml
+kubectl create -f pipelinerun_test.yaml
+kubectl get secrets
+
+tkn tasks delete --all
+tkn hub install task git-clone && tkn hub install task buildah
+
+!!!!!!   kubectl create clusterrolebinding pipeline-admin --clusterrole=cluster-admin --serviceaccount=default:pipeline
+
+kubectl create rolebinding pipeline-pvc --clusterrole=edit --serviceaccount=default:pipeline --namespace=default
+
+
+kubectl apply -f https://storage.googleapis.com/tekton-releases/interceptors/github/latest/release.yaml
+
+
+#Forward dashboard to localhost:9097
+kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
+
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.45.0/deploy/static/provider/cloud/deploy.yaml
+
+
+kubectl exec -it mysql-77f9746947-qr2j9 -- mysql -u root -p1234
+gcloud components install gke-gcloud-auth-plugin
+
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml -n tekton-pipelines
+
+
+
+kubectl get pods -n ingress-nginx

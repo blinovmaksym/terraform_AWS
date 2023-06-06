@@ -1,0 +1,10 @@
+Kubernetes_version = 1.26
+Nginx-Controller_version = 1.8.0
+WP=
+Mysql=
+Tekton CLI = 0.30.1
+Tekton Pipelines = latest
+Tekton Dashboard = latest
+Tekton Triggers = latest
+Tekton Operators =latest
+

@@ -18,10 +18,6 @@ RUN apk add --no-cache \
 # # Скачать и установить WP-CLI
 RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x /usr/local/bin/wp
-# Set the server name and login credentials
-# ENV SERVER_NAME mysql
-# ENV USER_NAME root
-# ENV PASSWORD wordsec
 # Вынесенные скрипты
 COPY scripts/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh
 RUN chmod +x /usr/local/bin/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh

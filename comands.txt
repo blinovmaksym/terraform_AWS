@@ -37,10 +37,21 @@ kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
 
 kubectl exec -it mysql-77f9746947-qr2j9 -- mysql -u root -p1234
 gcloud components install gke-gcloud-auth-plugin
-
+kubectl get pods -n ingress-nginx
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.0/deploy/static/provider/cloud/deploy.yaml -n tekton-pipelines
 
+#<---------------->For aws
+if win10 then 
+1) install AWSCLI from https://aws.amazon.com/ru/cli/
+2) add to PATH C:\Program Files\Amazon\AWSCLI\
+3) open Powershell 
+    a) aws configure
+    b) AWS Access Key ID [None]: ваш_access_key_id
+       AWS Secret Access Key [None]: ваш_secret_access_key
+       Default region name [None]: us-east-1
+       Default output format [None]: json
 
-
-kubectl get pods -n ingress-nginx
+aws eks update-kubeconfig --region us-east-1 --name maximusclustername
+#Forward dashboard to localhost:9097
+kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097

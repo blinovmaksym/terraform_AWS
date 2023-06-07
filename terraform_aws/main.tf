@@ -50,9 +50,10 @@ module "eks" {
   enable_irsa = true
   eks_managed_node_groups = {
   main = {
-    desired_capacity = 2
+    desired_capacity = 3
     max_capacity     = 3
-    min_capacity     = 2
+    min_capacity     = 3
+    instance_type = "t3.medium"
     autoscaling_enabled = true
     scaling_config = {
       min_size     = 2
@@ -60,8 +61,6 @@ module "eks" {
       desired_size = 2
       target_cpu_utilization = 50 
       target_memory_utilization = 70
-
-    instance_type = "t3.medium"
     }
   }
 }

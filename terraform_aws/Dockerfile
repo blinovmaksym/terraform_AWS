@@ -19,7 +19,8 @@ RUN apk add --no-cache \
 RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x /usr/local/bin/wp
 # Вынесенные скрипты
-COPY scripts/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh
-RUN chmod +x /usr/local/bin/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh
+COPY setup.sh /usr/local/bin/setup.sh
+RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
 # Установить entrypoint на setup-db-wp.sh
-ENTRYPOINT ["/usr/local/bin/setup-db-wp.sh"]
+ENTRYPOINT ["/usr/local/bin/setup.sh"]
+

@@ -42,3 +42,11 @@ if win10 then
 aws eks update-kubeconfig --region us-east-1 --name maximusclustername
 #Forward dashboard to localhost:9097
 kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
+
+
+docker build -t maksymblinov/init_db_wp:v2 ./ &&
+docker push maksymblinov/init_db_wp:v2
+
+
+
+maksymblinov/init_db_wp:v1

@@ -47,8 +47,7 @@ module "eks" {
 
   vpc_id = module.vpc.vpc_id
   eks_managed_node_groups = {
-    blue = {}
-    green = {
+    main = {
       min_size     = 2
       max_size     = 10
       desired_size = 2

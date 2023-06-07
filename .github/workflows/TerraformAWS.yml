@@ -84,8 +84,8 @@ jobs:
           SCRIPT_DIR: ${{ github.workspace }}/terraform_aws/scripts
         run: bash  $SCRIPT_DIR/install-tekton.sh
 
-      - name: Wait for 120 seconds()
-        run: sleep 120s
+      - name: Wait for 20 seconds()
+        run: sleep 20s
 
       - name: Check Service
         run: kubectl get service 

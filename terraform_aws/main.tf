@@ -51,9 +51,15 @@ module "eks" {
   eks_managed_node_groups = {
   main = {
     desired_capacity = 2
-    max_capacity     = 2
+    max_capacity     = 3
     min_capacity     = 2
-
+    autoscaling_enabled = true
+    scaling_config = {
+      min_size     = 2
+      max_size     = 5
+      desired_size = 2
+      target_cpu_utilization = 50 
+      target_memory_utilization = 70
 
     instance_type = "t3.medium"
     }

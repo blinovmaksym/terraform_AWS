@@ -62,7 +62,7 @@ spec:
           - name: IMAGE
             value: "docker.io/maksymblinov/init_db_wp"
           - name: TAG
-            value: v1
+            value: v2
         workspaces:
           - name: workspace
             persistentVolumeClaim:

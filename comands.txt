@@ -17,7 +17,9 @@ tkn tasks delete --all
 tkn hub install task git-clone && tkn hub install task buildah
 kubectl exec -it mysql-77f9746947-qr2j9 -- mysql -u root -p1234
 kubectl get pods -n ingress-nginx
- kubectl delete deployments --all && kubectl delete services --all && kubectl delete persistentvolumeclaims --all && kubectl delete persistentvolumes --all && kubectl delete storageclasses --all && kubectl delete namespace --all
+kubectl delete deployments --all && kubectl delete services --all && kubectl delete persistentvolumeclaims --all && kubectl delete persistentvolumes --all && kubectl delete storageclasses --all && kubectl delete namespace --all
+
+
 #<---------------->For GCP
 gcloud components install gke-gcloud-auth-plugin
 gcloud container clusters get-credentials maxsprout-clusterk8s --region=us-central1 --project=itspoutproject

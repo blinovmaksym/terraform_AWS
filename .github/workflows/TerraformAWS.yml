@@ -1,6 +1,4 @@
-
 name: "Deploy K8s in AWS_Tekton"
-
 on:
   push:
     paths:
@@ -21,8 +19,6 @@ jobs:
     defaults:
       run:
         working-directory: terraform_aws
-
-
 
     steps:
      - name: Checkout code

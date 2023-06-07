@@ -40,11 +40,12 @@ EOM
 
 kubectl apply -f regsecret.yaml
 
-echo "<< 7 >> ----- >apply -f pipeline/"
+echo "<< 7 >> ----- >apply -f tekton/"
+kubectl apply -f tekton/
+
+echo "<< 8 >> ----- >apply -f pipeline/"
 kubectl apply -f pipeline/
 
-echo "<< 8 >> ----- >apply -f tekton/"
-kubectl apply -f tekton/
 
 kubectl create rolebinding pipeline-pvc --clusterrole=edit --serviceaccount=default:pipeline --namespace=default
 kubectl create clusterrolebinding pipeline-admin --clusterrole=cluster-admin --serviceaccount=default:pipeline

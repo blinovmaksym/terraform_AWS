@@ -46,22 +46,16 @@ module "eks" {
   cluster_endpoint_public_access = true
 
   vpc_id = module.vpc.vpc_id
-
-  enable_irsa = true
   eks_managed_node_groups = {
-  main = {
-    desired_capacity = 3
-    max_capacity     = 3
-    min_capacity     = 3
-    instance_type = "t3.medium"
-    autoscaling_enabled = true
-    scaling_config = {
+    blue = {}
+    green = {
       min_size     = 2
-      max_size     = 5
+      max_size     = 10
       desired_size = 2
-      target_cpu_utilization = 50 
-      target_memory_utilization = 70
+
+      instance_types = ["t3.medium"]
+      capacity_type  = "SPOT"
     }
   }
-}
+
 }

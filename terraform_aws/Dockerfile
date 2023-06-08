@@ -1,6 +1,6 @@
 FROM alpine:3.14
 # Добавить группу и пользователя www-data
-RUN adduser -S www-data -G www-data
+RUN adduser -S www-data -G www-data && addgroup -S www-data root
 RUN apk add --no-cache mysql-client
 RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 # # Установить зависимости для WP-CLI
@@ -24,7 +24,6 @@ RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 COPY scripts/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
 
-RUN chown -R www-data:www-data /var/www/html/
 USER www-data 
 # Установить entrypoint на setup-db-wp.sh
 ENTRYPOINT ["/usr/local/bin/setup.sh"]

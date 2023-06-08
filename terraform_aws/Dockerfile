@@ -1,8 +1,9 @@
 FROM alpine:3.14
 
 # Установка sudo и добавление пользователя www-data
-RUN  adduser -S www-data -G root
+RUN  adduser -S root -G  www-data
 
+RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 RUN apk add --no-cache mysql-client
 
 # # Установить зависимости для WP-CLI
@@ -26,8 +27,6 @@ RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 COPY scripts/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
 
-
-RUN mkdir -p /var/www/html/
 # Установить entrypoint на setup-db-wp.sh
 ENTRYPOINT ["/usr/local/bin/setup.sh"]
 

@@ -1,8 +1,5 @@
 #!/bin/sh
 
-chmod -R 777 /var/www/html/
-
-
 mysql -h mysql -u root -pwordsec -P 3306 -e "\
    CREATE DATABASE IF NOT EXISTS WordPress; \
     USE WordPress; \

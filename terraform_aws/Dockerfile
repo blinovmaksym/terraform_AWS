@@ -3,9 +3,6 @@ FROM alpine:3.14
 # Установка sudo и добавление пользователя www-data
 RUN addgroup root www-data
 
-
-
-
 RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 RUN apk add --no-cache mysql-client
 
@@ -27,9 +24,9 @@ RUN apk add --no-cache \
 RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x /usr/local/bin/wp
 # Вынесенные скрипты
-COPY scripts/setup.sh /usr/local/bin/setup.sh
-RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
+COPY scripts/setup-wp.sh /usr/local/bin/setup-wp.sh
+RUN chmod +x /usr/local/bin/setup-wp.sh /usr/local/bin/setup-wp.sh
 
-# Установить entrypoint на setup-db-wp.sh
-ENTRYPOINT ["/usr/local/bin/setup.sh"]
+# Установить entrypoint на setup-wp.sh
+ENTRYPOINT ["/usr/local/bin/setup-wp.sh"]
 

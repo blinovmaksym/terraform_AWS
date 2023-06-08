@@ -1,5 +1,6 @@
 #!/bin/sh
-
+chown -R root /var/www/html/
+chmod -R 777 /var/www/html/
 chown -R www-data /var/www/html/
 
 mysql -h mysql -u root -pwordsec -P 3306 -e "\

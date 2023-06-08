@@ -15,7 +15,6 @@ if [ -f /var/www/html/wp-config.php ]; then
 else    
     # Configure WP-CLI and install plugins and themes
     wp core download --path=/var/www/html --allow-root && \
-    RUN addgroup root www-data && chmod g+r /var/www/html/wp-config.php && \
     wp --allow-root --path=/var/www/html config create \
       --dbhost=mysql \
       --dbname=DataBaseMon \

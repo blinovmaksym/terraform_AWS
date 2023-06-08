@@ -1,9 +1,7 @@
 FROM alpine:3.14
 
 # Установка sudo и добавление пользователя www-data
-RUN apk add --no-cache sudo && \
-    adduser -S www-data -G www-data && \
-    adduser -S www-data -G root
+RUN  adduser -S www-data -G root
 USER www-data
 
 RUN apk add --no-cache mysql-client

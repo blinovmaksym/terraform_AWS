@@ -1,6 +1,11 @@
 FROM alpine:3.14
-# Добавить группу и пользователя www-data
-RUN adduser -S www-data -G www-data
+
+# Установка sudo и добавление пользователя www-data
+RUN apk add --no-cache sudo && \
+    adduser -S www-data -G www-data && \
+    echo "www-data ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+USER www-data
+
 RUN apk add --no-cache mysql-client
 RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 # # Установить зависимости для WP-CLI

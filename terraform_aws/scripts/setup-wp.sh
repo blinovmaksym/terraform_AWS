@@ -18,7 +18,7 @@ else
     wp --allow-root --path=/var/www/html config create \
       --dbhost=mysql \
       --dbname=DataBaseMon \
-      --dbuser=MyWordPress \
+      --dbuser=root \
       --dbpass=wordsec \
       --allow-root && \
     wp --allow-root --path=/var/www/html core install \

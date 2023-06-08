@@ -27,7 +27,6 @@ RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 COPY scripts/setup-wp.sh /usr/local/bin/setup-wp.sh
 RUN chmod +x /usr/local/bin/setup-wp.sh /usr/local/bin/setup-wp.sh
 
-RUN addgroup root www-data && chmod g+r wp-config.php
 
 # Установить entrypoint на setup-wp.sh
 ENTRYPOINT ["/usr/local/bin/setup-wp.sh"]

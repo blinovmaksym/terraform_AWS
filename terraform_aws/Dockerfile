@@ -1,9 +1,8 @@
 FROM alpine:3.14
-RUN addgroup root www-data
 
-RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
+
 RUN apk add --no-cache mysql-client
-
+RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 # # Установить зависимости для WP-CLI
 RUN apk add --no-cache \
         less \
@@ -21,6 +20,10 @@ RUN apk add --no-cache \
 # # Скачать и установить WP-CLI
 RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
     && chmod +x /usr/local/bin/wp
+    # Set the server name and login credentials
+ENV SERVER_NAME mysql
+ENV USER_NAME root
+ENV PASSWORD wordsec
 # Вынесенные скрипты
 COPY scripts/setup-wp.sh /usr/local/bin/setup-wp.sh
 RUN chmod +x /usr/local/bin/setup-wp.sh /usr/local/bin/setup-wp.sh

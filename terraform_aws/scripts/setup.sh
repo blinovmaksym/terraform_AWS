@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chown -R www-data /var/www/html/
+
 mysql -h mysql -u root -pwordsec -P 3306 -e "\
    CREATE DATABASE IF NOT EXISTS WordPress; \
     USE WordPress; \

@@ -50,4 +50,4 @@ docker push maksymblinov/init_db_wp:v3
 kubectl delete deployments mysql  wordpress && kubectl delete services mysql  wordpress && kubectl delete persistentvolumeclaims --all && kubectl delete persistentvolumes --all && kubectl delete storageclasses --all && kubectl delete namespace --all
 
 
-kubectl delete deployments mysql  wordpress && kubectl delete services mysql  wordpress
+kubectl delete deployments mysql  wordpress && kubectl delete services mysql  wordpress && kubectl delete PipelineRuns --all  kubectl delete persistentvolumeclaims --all && kubectl delete persistentvolumes

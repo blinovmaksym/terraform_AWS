@@ -27,7 +27,7 @@ COPY scripts/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
 
 
-RUN mkdir -p /var/www/html/ && chown -R www-data:www-data /var/www/html/
+RUN mkdir -p /var/www/html/
 # Установить entrypoint на setup-db-wp.sh
 ENTRYPOINT ["/usr/local/bin/setup.sh"]
 

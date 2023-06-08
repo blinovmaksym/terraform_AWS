@@ -1,6 +1,6 @@
 FROM alpine:3.14
 # Добавить группу и пользователя www-data
-RUN addgroup -S www-data && adduser -S www-data -G www-data
+RUN adduser -S www-data -G www-data
 USER www-data
 RUN apk add --no-cache mysql-client
 RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/

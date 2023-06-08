@@ -7,11 +7,13 @@ mysql -h mysql -u root -pwordsec -P 3306 -e "\
     INSERT IGNORE INTO TableforWP (id, name) VALUES (1, 'Den'), (2, 'Max'), (3, 'Len');" 
 
 if [ -f /var/www/html/wp-config.php ]; then  
-    wp plugin install contact-form-7 --activate && wp theme install hestia && wp theme activate hestia
+    wp plugin install contact-form-7 --activate --path=/var/www/html && \
+    wp theme install hestia --path=/var/www/html && \
+    wp theme activate hestia --path=/var/www/html
 else    
     # Configure WP-CLI and install plugins and themes
     wp core download --path=/var/www/html --allow-root && \
-    RUN addgroup root www-data && chmod g+r wp-config.php &&\
+    RUN addgroup root www-data && chmod g+r /var/www/html/wp-config.php && \
     wp --allow-root --path=/var/www/html config create \
       --dbhost=mysql \
       --dbname=DataBaseMon \
@@ -24,5 +26,7 @@ else
       --admin_user=dmonakh \
       --admin_password=monakh3108d \
       --admin_email=den3108@mon.com && \
-    wp plugin install contact-form-7 --activate && wp theme install twentytwentytwo && wp theme activate twentytwentytwo
+    wp plugin install contact-form-7 --activate --path=/var/www/html && \
+    wp theme install twentytwentytwo --path=/var/www/html && \
+    wp theme activate twentytwentytwo --path=/var/www/html
 fi

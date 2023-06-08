@@ -1,4 +1,5 @@
 FROM alpine:3.14
+RUN addgroup root www-data
 
 RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
 RUN apk add --no-cache mysql-client

@@ -23,6 +23,7 @@ RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh
 # Вынесенные скрипты
 COPY scripts/setup.sh /usr/local/bin/setup.sh
 RUN chmod +x /usr/local/bin/setup.sh /usr/local/bin/setup.sh
+USER www-data 
 # Установить entrypoint на setup-db-wp.sh
 ENTRYPOINT ["/usr/local/bin/setup.sh"]
 

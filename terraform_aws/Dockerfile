@@ -2,8 +2,7 @@ FROM alpine:3.14
 
 # Установка sudo и добавление пользователя www-data
 RUN apk add --no-cache sudo && \
-    adduser -S www-data -G www-data && \
-    echo "www-data ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    adduser -S www-data -G www-data -G root && 
 USER www-data
 
 RUN apk add --no-cache mysql-client

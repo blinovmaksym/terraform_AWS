@@ -55,7 +55,7 @@ spec:
         name: kubernetes-actions
       runAfter:
         - build-push-image
-      params:
+      params: # Replace with you repo raw.
         - name: script  
           value: |
             kubectl apply -f https://raw.githubusercontent.com/blinovmaksym/terraform_AWS/main/terraform_aws/Deploy.yml

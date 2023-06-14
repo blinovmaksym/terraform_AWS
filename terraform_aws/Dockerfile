@@ -1,9 +1,8 @@
 FROM alpine:3.14
-
-
+RUN mkdir -p /var/www/html/ && chmod 755 /var/www/html/
+# Install Mysql Client
 RUN apk add --no-cache mysql-client
-RUN mkdir -p /var/www/html/ && chmod 777 /var/www/html/
-# # Установить зависимости для WP-CLI
+# Install dependencies for WP-CLI
 RUN apk add --no-cache \
         less \
         php7 \
@@ -17,21 +16,16 @@ RUN apk add --no-cache \
         php7-xml \
         php7-xmlwriter \
         php7-simplexml
-# # Скачать и установить WP-CLI
-RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x /usr/local/bin/wp
-
-RUN wget -O /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
+# Download and Install WP-CLI
+RUN wget -O /usr/local/bin/wp https://github.com/wp-cli/wp-cli/releases/download/v2.7.1/wp-cli-2.7.1.phar \
     && chmod +x /usr/local/bin/wp
-    # Set the server name and login credentials
+# Set the server name and login credentials
+# Replace with you dbpass.
 ENV SERVER_NAME mysql
 ENV USER_NAME root
 ENV PASSWORD wordsec
-# Вынесенные скрипты
-COPY scripts/setup-wp.sh /usr/local/bin/setup-wp.sh
-RUN chmod +x /usr/local/bin/setup-wp.sh /usr/local/bin/setup-wp.sh
-
-
-# Установить entrypoint на setup-wp.sh
-ENTRYPOINT ["/usr/local/bin/setup-wp.sh"]
-
+# Implemented scripts
+COPY scripts/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh
+RUN chmod +x /usr/local/bin/setup-db-wp.sh /usr/local/bin/setup-db-wp.sh
+# Install entrypoint for setup-db-wp.sh
+ENTRYPOINT ["/usr/local/bin/setup-db-wp.sh"]

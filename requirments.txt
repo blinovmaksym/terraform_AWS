@@ -1,5 +1,6 @@
 Kubernetes_version = 1.26
 Nginx-Controller_version = 1.8.0
+WP_CLI=2.7.1
 WP=
 Mysql=
 Tekton CLI = 0.30.1

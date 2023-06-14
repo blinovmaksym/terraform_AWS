@@ -5,13 +5,13 @@ provider "aws" {
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "maximusclustername"
+  cluster_name = "mondyk8awsklas"
 }
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
 
-  name                 = "k8s-vpc-test"
+  name                 = "k8s-vpc"
   cidr                 = "172.16.0.0/16"
   azs                  = data.aws_availability_zones.available.names
   private_subnets      = ["172.16.1.0/24", "172.16.2.0/24", "172.16.3.0/24"]
@@ -57,4 +57,7 @@ module "eks" {
     }
   }
 
+}
+resource "aws_route53_zone" "dns" {
+  name     = "it-sproutdevteam.fun"
 }

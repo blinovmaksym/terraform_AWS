@@ -110,12 +110,15 @@ jobs:
           git commit --allow-empty -m "Empty commit"
           git push
 
+      - name: Ping service
+        run: ping -c 4 $(kubectl get svc ingress-nginx-controller -n ingress-nginx  -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
       - name: Wait for 5 minutes
         run: sleep 300s
 
       - name: Check Service
         run: kubectl get service
-        
+
 
 
 

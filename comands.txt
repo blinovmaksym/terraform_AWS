@@ -39,7 +39,7 @@ if win10 then
        Default region name [None]: us-east-1
        Default output format [None]: json
 
-aws eks update-kubeconfig --region us-east-1 --name maximusclustername
+aws eks update-kubeconfig --region us-east-1 --name mondyk8awsklas
 #Forward dashboard to localhost:9097
 kubectl --namespace tekton-pipelines port-forward svc/tekton-dashboard 9097:9097
 

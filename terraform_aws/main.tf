@@ -36,11 +36,10 @@ module "eks" {
   version = "19.5.1"
 
   cluster_name    = "${local.cluster_name}"
-  cluster_version = "1.26"
+  cluster_version = "1.21"
 
   vpc_id = module.vpc.vpc_id
   subnet_ids      = module.vpc.private_subnets
-  cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = true
 
   create_kms_key            = false
@@ -56,6 +55,7 @@ module "eks" {
       desired_size = 2
 
       instance_types = ["t3.medium"]
+      ami_id = "Select EKS-Optimized-AMI-here: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html"
       capacity_type  = "SPOT"
     }
   }

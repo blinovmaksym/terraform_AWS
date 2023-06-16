@@ -55,3 +55,6 @@ kubectl delete services mysql  wordpress && \
 kubectl delete PipelineRuns --all  && \
 kubectl delete persistentvolumeclaims --all && \
 kubectl delete persistentvolumes
+
+
+for elb_name in $(aws elb describe-load-balancers --query 'LoadBalancerDescriptions[].LoadBalancerName' --output text); do aws elb delete-load-balancer --load-balancer-name "$elb_name"; done

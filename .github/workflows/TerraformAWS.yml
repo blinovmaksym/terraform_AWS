@@ -51,7 +51,7 @@ jobs:
 
      - name: Terraform Destroy
        if: contains(github.event.head_commit.message, 'destroy')
-       run: terraform destroy -force -lock=false
+       run: terraform destroy -auto-approve -lock=false
 
   terraform-CD:
       needs: 

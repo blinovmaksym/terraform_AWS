@@ -56,7 +56,7 @@ module "eks" {
       desired_size = 2
 
       instance_types = ["t3.medium"]
-      ami_id = "Select EKS-Optimized-AMI-here: https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html"
+      ami_id = "Select EKS-Optimized-AMI-here:ami-0c1b28d2a0a4dad74"
       capacity_type  = "SPOT"
     }
   }

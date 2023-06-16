@@ -45,7 +45,10 @@ module "eks" {
   create_kms_key            = false
   cluster_encryption_config = {}
 
+  eks_managed_node_group_defaults = {
+    ami_type = "ami-09e35c383eea7b5ec"
 
+  }
 
 
 
@@ -57,7 +60,6 @@ module "eks" {
       desired_size = 2
 
       instance_types = ["t3.medium"]
-      ami_id = "ami-09e35c383eea7b5ec"
       capacity_type  = "SPOT"
     }
   }

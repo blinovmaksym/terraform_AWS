@@ -56,7 +56,7 @@ module "eks" {
       desired_size = 2
 
       instance_types = ["t3.medium"]
-      ami_id = "ami-0c1b28d2a0a4dad74"
+      ami_id = "ami-09e35c383eea7b5ec"
       capacity_type  = "SPOT"
     }
   }

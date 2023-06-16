@@ -10,6 +10,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
+  version = "3.19.0"
 
   name                 = "k8s-vpc"
   cidr                 = "172.16.0.0/16"
@@ -38,16 +39,13 @@ module "eks" {
   cluster_name    = "${local.cluster_name}"
   cluster_version = "1.24"
 
-  vpc_id = module.vpc.vpc_id
+  vpc_id          = module.vpc.vpc_id
   subnet_ids      = module.vpc.private_subnets
   cluster_endpoint_public_access  = true
 
-  create_kms_key            = false
-  cluster_encryption_config = {}
-
-  # eks_managed_node_group_defaults = {
-  #   ami_type = "ami-09e35c383eea7b5ec"
-  # }
+    eks_managed_node_group_defaults = {
+    ami_type = "AL2_x86_64"
+  }
 
   eks_managed_node_groups = {
     main = {

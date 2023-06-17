@@ -59,8 +59,7 @@ module "eks" {
     }
   }
 
-  depends_on = [module.vpc]
-
+  depends_on = [vpc_id]
  
 }
 resource "aws_route53_zone" "dns" {

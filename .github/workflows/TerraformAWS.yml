@@ -43,7 +43,7 @@ jobs:
 
 
      - name: Terraform state list
-       id: state list
+       id: state
        run: terraform state list
 
 

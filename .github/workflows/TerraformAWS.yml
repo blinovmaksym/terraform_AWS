@@ -48,7 +48,7 @@ jobs:
 
      - name: Terraform Destroy
        id: state1
-       run: terraform destroy --target     module.vpc.aws_nat_gateway.this[0] 
+       run: terraform destroy --target     module.vpc.aws_eip.nat[0]
 
 
 

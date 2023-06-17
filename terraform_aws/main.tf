@@ -22,9 +22,6 @@ module "vpc" {
   single_nat_gateway   = true
   enable_dns_hostnames = true
 
-  lifecycle {
-    prevent_destroy = false
-  }
 
   depends_on = []
 
@@ -64,17 +61,12 @@ module "eks" {
       capacity_type  = "SPOT"
     }
   }
-  lifecycle {
-    prevent_destroy = false
-  }
   depends_on = [module.vpc]
  
 }
 resource "aws_route53_zone" "dns" {
   name     = "it-sproutdevteam.fun"
-  lifecycle {
-    prevent_destroy = false
-  }
+
   depends_on = [module.eks]
 }
 

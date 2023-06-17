@@ -22,9 +22,6 @@ module "vpc" {
   single_nat_gateway   = true
   enable_dns_hostnames = true
 
-
-  depends_on = []
-
   public_subnet_tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
     "kubernetes.io/role/elb"                      = "1"
@@ -61,7 +58,9 @@ module "eks" {
       capacity_type  = "SPOT"
     }
   }
-  depends_on = [module.vpc]
+  depends_on = ["module.vpc"]
+
+  # module.vpc.k8s-vpc
  
 }
 resource "aws_route53_zone" "dns" {

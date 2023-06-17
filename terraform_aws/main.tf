@@ -58,9 +58,10 @@ module "eks" {
       capacity_type  = "SPOT"
     }
   }
-  depends_on = [
-    vpc    
-  ]
+
+  depends_on = [module.vpc]
+
+ 
 }
 resource "aws_route53_zone" "dns" {
   name     = "it-sproutdevteam.fun"

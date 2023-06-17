@@ -58,9 +58,9 @@ module "eks" {
       capacity_type  = "SPOT"
     }
   }
-  depends_on = [module.vpc]
+  depends_on = [module.vpc.k8s-vpc]
 
-  # module.vpc.k8s-vpc
+
  
 }
 resource "aws_route53_zone" "dns" {

@@ -58,7 +58,7 @@ module "eks" {
       capacity_type  = "SPOT"
     }
   }
-  depends_on = ["module.vpc"]
+  depends_on = [module.vpc]
 
   # module.vpc.k8s-vpc
  

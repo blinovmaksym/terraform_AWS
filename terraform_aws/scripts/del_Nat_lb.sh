@@ -1,6 +1,6 @@
 #!/bin/bash
 
-Удаление Load Balancer
+#Удаление Load Balancer
 for elb_name in $(aws elb describe-load-balancers --query 'LoadBalancerDescriptions[].LoadBalancerName' --output text); do
   echo "Удаляем Load Balancer: $elb_name"
   aws elb delete-load-balancer --load-balancer-name "$elb_name"

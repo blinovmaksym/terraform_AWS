@@ -1,27 +1,27 @@
 #!/bin/bash
 # Получение имени кластера EKS
-cluster_name=$(aws eks list-clusters --output text --query 'clusters[0]')
+# cluster_name=$(aws eks list-clusters --output text --query 'clusters[0]')
 
 # Получение списка групп узлов для кластера
-nodegroup_names=$(aws eks list-nodegroups --cluster-name $cluster_name --output text --query 'nodegroups[]')
+# nodegroup_names=$(aws eks list-nodegroups --cluster-name $cluster_name --output text --query 'nodegroups[]')
 
-# Перебор каждой группы узлов и их удаление
-for nodegroup_name in $nodegroup_names; do
-    echo "Удаляем группу узлов: $nodegroup_name"
-    aws eks delete-nodegroup --cluster-name $cluster_name --nodegroup-name $nodegroup_name
+# # Перебор каждой группы узлов и их удаление
+# for nodegroup_name in $nodegroup_names; do
+#     echo "Удаляем группу узлов: $nodegroup_name"
+#     aws eks delete-nodegroup --cluster-name $cluster_name --nodegroup-name $nodegroup_name
     
-    # Ожидание завершения удаления группы узлов
-    echo "Ожидаем завершения удаления группы узлов: $nodegroup_name"
-    aws eks wait nodegroup-deleted --cluster-name $cluster_name --nodegroup-name $nodegroup_name
-    echo "Группа узлов удалена: $nodegroup_name"
+#     # Ожидание завершения удаления группы узлов
+#     echo "Ожидаем завершения удаления группы узлов: $nodegroup_name"
+#     aws eks wait nodegroup-deleted --cluster-name $cluster_name --nodegroup-name $nodegroup_name
+#     echo "Группа узлов удалена: $nodegroup_name"
 
-    # Удаление узлов в группе
-    echo "Удаляем узлы в группе: $nodegroup_name"
-    aws ec2 describe-instances --filters "Name=tag:kubernetes.io/cluster/$cluster_name,Values=owned" "Name=tag:k8s.io/cluster-autoscaler/enabled,Values=true" "Name=tag:k8s.io/cluster-autoscaler/node-template/label/k8s.io/cluster-autoscaler/enabled,Values=true" "Name=tag:kubernetes.io/cluster/$cluster_name/node-group/$nodegroup_name,Values=$nodegroup_name" --query 'Reservations[].Instances[].InstanceId' --output text | tr '\t' '\n' | xargs -I {} aws ec2 terminate-instances --instance-ids {}
-    echo "Узлы в группе удалены: $nodegroup_name"
-done
+#     # Удаление узлов в группе
+#     echo "Удаляем узлы в группе: $nodegroup_name"
+#     aws ec2 describe-instances --filters "Name=tag:kubernetes.io/cluster/$cluster_name,Values=owned" "Name=tag:k8s.io/cluster-autoscaler/enabled,Values=true" "Name=tag:k8s.io/cluster-autoscaler/node-template/label/k8s.io/cluster-autoscaler/enabled,Values=true" "Name=tag:kubernetes.io/cluster/$cluster_name/node-group/$nodegroup_name,Values=$nodegroup_name" --query 'Reservations[].Instances[].InstanceId' --output text | tr '\t' '\n' | xargs -I {} aws ec2 terminate-instances --instance-ids {}
+#     echo "Узлы в группе удалены: $nodegroup_name"
+# done
 
-echo "Все группы узлов и связанные узлы удалены для кластера: $cluster_name"
+# echo "Все группы узлов и связанные узлы удалены для кластера: $cluster_name"
 
 echo "Ждём 1 минуту"
 sleep 60 
